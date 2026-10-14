@@ -1,0 +1,30 @@
+# Stage 1: Build Dependencies
+FROM python:3.11-slim AS builder
+
+WORKDIR /app
+
+# Cache dependencies layer separately from application code
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir --user -r requirements.txt
+
+# Stage 2: Minimal Runtime Image
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Create non-root user for security
+RUN useradd -m -u 1000 appuser
+
+# Copy installed Python packages from builder stage
+COPY --from=builder /root/.local /home/appuser/.local
+COPY --chown=appuser:appuser src/ ./src
+
+ENV PATH=/home/appuser/.local/bin:$PATH
+
+USER appuser
+
+HEALTHCHECK --interval=30s --timeout=3s \
+  CMD curl -f http://localhost:8000/health || exit 1
+
+ENTRYPOINT ["uvicorn", "src.predict:app", "--host", "0.0.0.0", "--port", "8000"]

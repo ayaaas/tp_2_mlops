@@ -1,0 +1,6 @@
+{
+    "accuracy": 0.7486,
+    "training_time_seconds": 0.267,
+    "num_train_samples": 24580,
+    "num_test_samples": 6145
+}

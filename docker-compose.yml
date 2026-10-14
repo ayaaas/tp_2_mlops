@@ -1,0 +1,11 @@
+services:
+  serve:
+    build:
+      context: .
+      dockerfile: Dockerfile.serve.opt
+    image: adult-serve:opt
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./artifacts:/app/artifacts
+    restart: unless-stopped
