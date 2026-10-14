@@ -1,15 +1,99 @@
+
+# ==========================================
+# Python environments
+# ==========================================
 venv/
 .venv/
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.pytest_cache/
+env/
+ENV/
 
+# ==========================================
+# Python cache and compiled files
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ==========================================
+# Testing and coverage
+# ==========================================
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# ==========================================
+# Secrets and local environment configuration
+# ==========================================
+.env
+.env.*
+!.env.example
+!.env.template
+
+# ==========================================
+# Jupyter notebooks
+# Keep notebooks; ignore only checkpoints
+# ==========================================
+.ipynb_checkpoints/
+
+# ==========================================
+# IDE and operating system files
+# ==========================================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*~
+
+# ==========================================
+# Logs and temporary files
+# ==========================================
+*.log
+*.tmp
+*.bak
+
+# ==========================================
+# ML model artifacts and generated outputs
+# ==========================================
 artifacts/*
 !artifacts/.gitkeep
 
-.env
+mlruns/
+mlartifacts/
+checkpoints/
+*.joblib
+*.pkl
+*.pickle
+*.onnx
+*.pt
+*.pth
+*.safetensors
 
-# Ignore datasets
+# ==========================================
+# Local datasets
+# ==========================================
 data/
+datasets/
+
+# ==========================================
+# Local databases
+# ==========================================
+*.db
+*.sqlite
+*.sqlite3
+
+# ==========================================
+# Build and distribution
+# ==========================================
+build/
+dist/
+*.egg-info/
+
+# ==========================================
+# Local tool configuration
+# ==========================================
+.airflow/
+.sparkStaging/
+.DS_Store
